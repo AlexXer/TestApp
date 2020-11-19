@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/firstTaskFragment"
+        android:icon="@drawable/ic_first_task_24"
+        android:title="@string/first_task" />
+    <item
+        android:id="@+id/secondTaskFragment"
+        android:icon="@drawable/ic_second_task_24"
+        android:title="@string/second_task" />
+    <item
+        android:id="@+id/thirdTaskFragment"
+        android:icon="@drawable/ic_third_task_24"
+        android:title="@string/third_task" />
+</menu>

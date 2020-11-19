@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.alexxer.testapp.generating.NumberGenerator
 
 import com.alexxer.testapp.generating.SquareOddNumberGenerator
-import com.alexxer.testapp.utils.Utils
+import com.alexxer.testapp.utils.KeyboardUtils
 
 
 class SecondTaskFragment : Fragment() {
@@ -28,12 +29,19 @@ class SecondTaskFragment : Fragment() {
         button.setOnClickListener {
             if (et.text.toString().isNotEmpty()) {
                 val n = et.text.toString().toInt()
-                if (n in 0..65535) {
+                if (n in 0..46340) {
                     val generateNumbers = numberGenerator.generateNumbers(n)
                     adapter.setNumbers(generateNumbers)
-                    Utils.hideKeyboard(requireActivity())
+                } else {
+                    Toast.makeText(
+                        activity,
+                        "Number should be in the range from 0 to 43640, otherwise we will have overflow",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    adapter.setNumbers(IntArray(0))
                 }
             }
+            KeyboardUtils.hideKeyboard(requireActivity())
         }
         rv.adapter = adapter
 
